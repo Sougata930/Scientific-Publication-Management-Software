@@ -28,9 +28,9 @@ export const lab_equipments = pgTable("lab_Equipment", {
 export const researchers = pgTable("researchers", {
   id: integer("id").primaryKey().generatedByDefaultAsIdentity(),
   name: text("name").notNull(),
-  phone_extension: text("phone_extension")
-    .notNull()
-    .references(() => office.id, { onDelete: "set null" }),
+  phone_extension: text("phone_extension").references(() => office.id, {
+    onDelete: "set null",
+  }),
   ...timestamps,
 });
 // Skilled Table
@@ -55,18 +55,19 @@ export const journal_issue = pgTable("journal_Issue", {
   publication_date: date("publication_date").notNull(),
   title: text("title").notNull(),
   format: text("format").notNull(),
-  emp_id: integer("emp_id")
-    .notNull()
-    .references(() => researchers.id, { onDelete: "set null" }),
+  emp_id: integer("emp_id").references(() => researchers.id, {
+    onDelete: "set null",
+  }),
   ...timestamps,
 });
 // Research_Paper Table
 export const research_paper = pgTable("research_paper", {
   id: integer("id").primaryKey().generatedByDefaultAsIdentity(),
   title: text("title").notNull(),
-  volume_identifier: integer("volume_identifier")
-    .notNull()
-    .references(() => journal_issue.id, { onDelete: "null" }),
+  volume_identifier: integer("volume_identifier").references(
+    () => journal_issue.id,
+    { onDelete: "set null" },
+  ),
   ...timestamps,
 });
 // Authors Table

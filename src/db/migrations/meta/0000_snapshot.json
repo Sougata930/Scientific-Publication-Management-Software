@@ -1,5 +1,5 @@
 {
-  "id": "032ce6b9-f02e-4603-a29c-5ea7715848c2",
+  "id": "9bfc4901-3b06-44f8-aca3-d94ff699919c",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "7",
   "dialect": "postgresql",
@@ -127,7 +127,7 @@
           "name": "emp_id",
           "type": "integer",
           "primaryKey": false,
-          "notNull": true
+          "notNull": false
         },
         "updated_at": {
           "name": "updated_at",
@@ -292,7 +292,7 @@
           "name": "volume_identifier",
           "type": "integer",
           "primaryKey": false,
-          "notNull": true
+          "notNull": false
         },
         "updated_at": {
           "name": "updated_at",
@@ -321,7 +321,7 @@
           "columnsTo": [
             "id"
           ],
-          "onDelete": "null",
+          "onDelete": "set null",
           "onUpdate": "no action"
         }
       },
@@ -362,7 +362,7 @@
           "name": "phone_extension",
           "type": "text",
           "primaryKey": false,
-          "notNull": true
+          "notNull": false
         },
         "updated_at": {
           "name": "updated_at",
