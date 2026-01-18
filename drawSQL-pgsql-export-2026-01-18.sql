@@ -29,14 +29,14 @@ ALTER TABLE
 CREATE TABLE "Research_Paper"(
     "Paper_id" BIGINT NOT NULL,
     "Title" VARCHAR(255) NOT NULL,
-    "Lead_author" VARCHAR(255) NOT NULL,
     "Volume_Identifier" BIGINT NOT NULL
 );
 ALTER TABLE
     "Research_Paper" ADD PRIMARY KEY("Paper_id");
 CREATE TABLE "Authors"(
     "Emp_id" BIGINT NOT NULL,
-    "Paper_id" BIGINT NOT NULL
+    "Paper_id" BIGINT NOT NULL,
+    "Is_LeadAuthor" BOOLEAN NOT NULL
 );
 ALTER TABLE
     "Authors" ADD PRIMARY KEY("Emp_id");
@@ -57,8 +57,6 @@ ALTER TABLE
     "Authors" ADD CONSTRAINT "authors_emp_id_foreign" FOREIGN KEY("Emp_id") REFERENCES "Researcher"("Emp_id");
 ALTER TABLE
     "Journal_Issue" ADD CONSTRAINT "journal_issue_emp_id_foreign" FOREIGN KEY("Emp_id") REFERENCES "Researcher"("Emp_id");
-ALTER TABLE
-    "Research_Paper" ADD CONSTRAINT "research_paper_lead_author_foreign" FOREIGN KEY("Lead_author") REFERENCES "Researcher"("Emp_id");
 ALTER TABLE
     "Research_Paper" ADD CONSTRAINT "research_paper_paper_id_foreign" FOREIGN KEY("Paper_id") REFERENCES "Authors"("Paper_id");
 ALTER TABLE
