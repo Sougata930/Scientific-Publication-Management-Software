@@ -1,0 +1,1 @@
+ALTER TABLE "researchers" ADD COLUMN "is_Approved" boolean NOT NULL;

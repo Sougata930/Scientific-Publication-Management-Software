@@ -27,6 +27,7 @@ export const lab_equipments = pgTable("lab_Equipment", {
 // Researchers Table
 export const researchers = pgTable("researchers", {
   id: integer("id").primaryKey().generatedByDefaultAsIdentity(),
+  is_Approved: boolean("is_Approved").notNull(),
   name: text("name").notNull(),
   phone_extension: text("phone_extension").references(() => office.id, {
     onDelete: "set null",

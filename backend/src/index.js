@@ -1,7 +1,14 @@
-import express from "express";
+import { app } from "./app.js";
 
-import cors from "cors";
+import { connectDb } from "./db/db.js";
+import "dotenv/config";
 
-import dotenv from "dotenv";
-
-import { drizzle } from "drizzle-orm/node-postgres";
+connectDb()
+  .then(() => {
+    app.listen(process.env.PORT || 8000, () => {
+      console.log(`Server is running at port : ${process.env.PORT}`);
+    });
+  })
+  .catch((err) => {
+    console.log("Connection Failed !!", err);
+  });
